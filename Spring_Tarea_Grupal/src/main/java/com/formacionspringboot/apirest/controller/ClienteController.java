@@ -26,11 +26,13 @@ public class ClienteController {
 	@Autowired
 	private ClienteService servicio;
 	
-	@GetMapping({"/clientes","/todos"})
+	//Muestra todos los clientes
+	@GetMapping({"/clientes"})
 	public List<Cliente> index(){
 		return servicio.listarTodosLosClientes();
 	}
 	
+	//Buscar cliente por su id
 	@GetMapping("clientes/{id}")
 	public ResponseEntity<?> findClienteById(@PathVariable Long id) {
 		Cliente cliente=null;
@@ -57,7 +59,7 @@ public class ClienteController {
 		return servicio.findById(id);
 	}*/
 	
-	
+	// Un nuevo cliente
 	@PutMapping("cliente")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<?> saveCliente(@PathVariable Cliente cliente) {
@@ -87,7 +89,7 @@ public class ClienteController {
 	}
 	 */	
 	
-	
+	//Actializar cliente existente
 	@PutMapping("cliente/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<?> updateCliente(@RequestBody Cliente cliente, @PathVariable Long id) {
@@ -140,6 +142,7 @@ public class ClienteController {
 		servicio.delete(id);
 	}*/
 	
+	//Eliminar cliente
 	@DeleteMapping("/clientedelete/{id}")
 	public ResponseEntity<?> deleteCliente(@PathVariable Long id) {
 		Cliente clienteActual= servicio.findByNumCliente(id);

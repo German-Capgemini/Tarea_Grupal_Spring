@@ -51,8 +51,8 @@
 			<tbody>
 				<tr th:each="ventas: ${datos}">
 					<td th:text="${ventas.folio}"></td>
-					<td th:text="${ventas.cliente}"></td>
-					<td th:text="${ventas.producto}"></td>
+					<td th:text="${ventas.cliente.nombre}"></td>
+					<td th:text="${ventas.producto.nombre}"></td>
 					<td th:text="${ventas.cantidad}"></td>
 					<td th:text="${ventas.subtotal}"></td>
 					<td th:text="${ventas.iva}"></td>

@@ -76,4 +76,5 @@ public class VentaController {
 		ventaServicio.eliminarVenta(folio);
 		return "redirect:/ventas";
 	}
+
 }

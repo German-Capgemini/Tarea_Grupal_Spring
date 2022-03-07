@@ -7,6 +7,8 @@ import com.formacionspringboot.apirest.modelo.Producto;
 public interface ProductoService {
 
 	public List<Producto> listarTodosLosProductos();
+	
+	public List<Producto> findAll();
 
 	public Producto findByClave(Long clave);
 

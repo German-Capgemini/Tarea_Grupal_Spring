@@ -68,10 +68,20 @@ public class ProductoController {
 		return "redirect:/productos";
 	}
 
+	@GetMapping("/error")
+	public String error() {
+		return "error";
+	}
+
 	// Eliminar producto
 	@GetMapping("/producto/eliminar/{clave}")
 	public String eliminarProducto(@PathVariable Long clave) {
-		productoServicio.eliminarProducto(clave);
+		try {
+			productoServicio.eliminarProducto(clave);
+		} catch (Exception e) {
+			return "redirect:/error";
+		}
 		return "redirect:/productos";
 	}
+
 }

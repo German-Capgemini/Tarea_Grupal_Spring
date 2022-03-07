@@ -13,3 +13,13 @@ INSERT INTO ventas (cantidad, iva, subtotal, total, num_cliente, clave) VALUES (
 INSERT INTO ventas (cantidad, iva, subtotal, total, num_cliente, clave) VALUES ('4', '4', '500', '300', '3', '1');
 
 
+INSERT INTO usuarios (username,password,enabled) VALUES('german','$2a$10$5zPAUe1.CWsYH1udDwO/YODf.HIeg5sJsEEKMZj2U85Ryqdlc1LPy',1);
+INSERT INTO usuarios (username,password,enabled) VALUES('patricia','$2a$10$Afb7kuzKRV3vf/iJlvtNn.WbxKWKda6XhHADccPTUgfPXYWot.krW',1);
+INSERT INTO usuarios (username,password,enabled) VALUES('iñigo','$2a$10$NfnJbZcP3qhZne5DKlxaMO/B.otmVNl3ITAuXrbVanve93lp0tTbO',1);
+
+INSERT INTO roles (nombre) VALUES ('ROLE_USER');
+INSERT INTO roles (nombre) VALUES ('ROLE_ADMIN');
+
+INSERT INTO usuarios_roles (usuario_id,role_id) VALUES(1,1);
+INSERT INTO usuarios_roles (usuario_id,role_id) VALUES(2,2);
+INSERT INTO usuarios_roles (usuario_id,role_id) VALUES(3,1);

@@ -15,32 +15,34 @@ public class ProductoServicioImpl implements ProductoService {
 	ProductoServicioImpl productoDao;
 
 	@Override
-	public List<Producto> listarTodosLosProductos() {		
+	public List<Producto> listarTodosLosProductos() {
 		return productoDao.findAll();
 	}
 
 	@Override
 	public Producto findByClave(Long clave) {
-		// TODO Auto-generated method stub
-		return null;
+		return productoDao.findByClave(clave);
 	}
 
 	@Override
 	public Producto guardarProducto(Producto producto) {
-		// TODO Auto-generated method stub
-		return null;
+		return productoDao.guardarProducto(producto);
 	}
 
 	@Override
 	public Producto buscarProducto(Long clave) {
-		// TODO Auto-generated method stub
-		return null;
+		return productoDao.buscarProducto(clave);
 	}
 
 	@Override
 	public void eliminarProducto(Long clave) {
-		// TODO Auto-generated method stub
+		productoDao.eliminarProducto(clave);
 
+	}
+
+	@Override
+	public List<Producto> findAll() {
+		return productoDao.findAll();
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.formacionspringboot.apirest.serviceImpl;
+package com.formacionspringboot.apirest.servicoImpl;
 
 import java.util.List;
 

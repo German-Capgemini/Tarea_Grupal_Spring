@@ -30,8 +30,21 @@ public class Producto implements Serializable{
 	
 	@Column(nullable = false)
 	private int existencias;
+	
+	//Constructores
+	public Producto() {
+		
+	}
 
-	//Campos autocalculados
+	public Producto(String nombre, String descripcion, double precioUnitario, int existencias) {
+		
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.precioUnitario = precioUnitario;
+		this.existencias = existencias;
+	}
+
+	//getter y setter
 	public Long getClave() {
 		return clave;
 	}

@@ -1,6 +1,5 @@
 package com.formacionspringboot.apirest.controller;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.formacionspringboot.apirest.modelo.Cliente;
+import com.formacionspringboot.apirest.modelo.Producto;
 import com.formacionspringboot.apirest.modelo.Venta;
 import com.formacionspringboot.apirest.service.VentaService;
 
@@ -25,15 +26,14 @@ import com.formacionspringboot.apirest.service.VentaService;
 @RequestMapping("/api")
 public class VentasRestController {
 
-	
 	@Autowired
 	private VentaService servicio;
-	
+
 	@GetMapping("/ventasrest")
 	public List<Venta> findAllCompras() {
 		return servicio.listarTodosLosVentas();
 	}
-	
+
 	@PostMapping("/ventarest")
 	public ResponseEntity<?> saveVenta(@RequestBody Venta venta) {
 		Venta ventaNew = null;
@@ -41,7 +41,7 @@ public class VentasRestController {
 		try {
 			ventaNew = servicio.guardarVenta(venta);
 		} catch (DataAccessException e) {
-			// TODO: handle exception
+
 			response.put("mensaje", "Error al realizar la consulta.");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -50,7 +50,7 @@ public class VentasRestController {
 		response.put("compra", ventaNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("/venta/{id}")
 	public ResponseEntity<?> updateVenta(@RequestBody Venta venta, @PathVariable Long id) {
 		Venta ventaActual = servicio.findByFolio(id);
@@ -68,12 +68,11 @@ public class VentasRestController {
 			ventaActual.setSubtotal(venta.getSubtotal());
 			ventaActual.setIva(venta.getIva());
 			ventaActual.setTotal(venta.getTotal());
-			
+
 			servicio.guardarVenta(ventaActual);
-		
 
 		} catch (DataAccessException e) {
-			// TODO: handle exception
+
 			response.put("mensaje", "Error al realizar la consulta.");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -84,18 +83,17 @@ public class VentasRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
-	
 	@GetMapping("/ventas/{id}")
 	public ResponseEntity<?> findComprasById(@PathVariable Long id) {
 		Venta venta = null;
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			
+
 			venta = servicio.findByFolio(id);
-			
+
 		} catch (DataAccessException e) {
-			// TODO: handle exception
+
 			response.put("mensaje", "Error al realizar la consulta.");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -108,36 +106,43 @@ public class VentasRestController {
 
 		return new ResponseEntity<Venta>(venta, HttpStatus.OK);
 	}
-	
 
 	@DeleteMapping("/venta/{id}")
 	public ResponseEntity<?> deleteClienteExcepciones(@PathVariable Long id) {
-		Map<String,Object> 	response = new HashMap<>();
-		Venta ventaActual=servicio.findByFolio(id);
+		Map<String, Object> response = new HashMap<>();
+		Venta ventaActual = servicio.findByFolio(id);
 
-		if(ventaActual==null) {
+		if (ventaActual == null) {
 
-			response.put("mensaje", "Error: no se pudo editar, la venta con ID: "+id.toString()+"no existe en la BBDD");
-			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.NOT_FOUND);
+			response.put("mensaje",
+					"Error: no se pudo editar, la venta con ID: " + id.toString() + "no existe en la BBDD");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 
-		try {	
-		servicio.eliminarVenta(id);
+		try {
+			servicio.eliminarVenta(id);
 
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
+
 			response.put("mensaje", "Error al realizar un delete a la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 
-			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		response.put("venta", ventaActual);
 		response.put("mensaje", "Se ha borrado con exito el cliente");
 
-		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
-	
-	
-	
+
+	@GetMapping("/ventas/productos")
+	public List<Producto> listarProductos() {
+		return servicio.findAllProductos();
+	}
+
+	@GetMapping("/ventas/clientes")
+	public List<Cliente> listarClientes() {
+		return servicio.findAllClientes();
+	}
 }

@@ -42,6 +42,7 @@
 					<th>Apellidos</th>
 					<th>Sexo</th>
 					<th>Telefono</th>
+					<th>Acción</th>
 				<tr>
 			</thead>
 			<tbody>
@@ -56,7 +57,7 @@
 					<td><a
 						th:href="@{/cliente/editar/{numCliente}(numCliente = ${clientes.numCliente})}"
 						class="btn btn-info">Editar</a> <a
-						th:href="@{/cliente/eliminar/{id}(id = ${clientes.numCliente})}"
+						th:href="@{/cliente/eliminar/{numCliente}(numCliente = ${clientes.numCliente})}"
 						class="btn btn-danger">Borrar</a></td>
 				</tr>
 

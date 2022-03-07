@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Table(name = "clientes")
 public class Cliente implements Serializable{
 
-	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -27,6 +26,18 @@ public class Cliente implements Serializable{
 	
 	@Column(nullable = false, unique = true)
 	private int telefono;
+	
+	//Constructores
+	public Cliente(String nombre, String apellidos, String sexo, int telefono) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.sexo = sexo;
+		this.telefono = telefono;
+	}
+	
+	public Cliente() {
+		
+	}
 
 	//Getter y Setter
 	public Long getNumCliente() {

@@ -11,9 +11,7 @@ public interface VentaService {
 	public Venta findByFolio(Long folio);
 
 	public Venta guardarVenta(Venta venta);
-
-	public Venta buscarVenta(Long folio);
-
+	
 	public void eliminarVenta(Long folio);
 
 }

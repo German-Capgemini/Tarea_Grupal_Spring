@@ -9,3 +9,5 @@ import com.formacionspringboot.apirest.modelo.Producto;
 public interface ProductoRepository extends CrudRepository<Producto, Long>{
 
 }
+
+

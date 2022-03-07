@@ -12,8 +12,6 @@ public interface ClienteService {
 
 	public Cliente guardarCliente(Cliente cliente);
 
-	public Cliente buscarCliente(Long numCliente);
-
-	public void eliminarCliente(Long numCliente);
+	public Cliente eliminarCliente(Long numCliente);
 
 }

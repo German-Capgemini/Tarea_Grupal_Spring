@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Tarea Grupal</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+	<div class="container-fluid">
+  		<li class="nav-item">
+	 		<a class="nav-link active" aira-current="page" th:href=@{/empleados}>Empleados</a>
+	 	</li>
+	 	<li class="nav-item">
+	 		<a class="nav-link" th:ref="#">Nuevo Empleado</a>
+	 	</li>
+	</div>
+</nav>
+
+<div class="container">
+ 	<div class="row">
+ 		<div class="col-lg6 col-md-6 col-sm-6 container justify-content-center card">
+ 			<h1 class="text-center">Registro de empleado</h1>
+ 			<div class="card-body">
+ 				<form th:action="@{/empleado}" th:object="${empleado}" method="POST" >
+ 					<div class="from-group">
+ 						<label>Nombre: </label>
+ 						<input type="text" name="nombre" th:field="*{nombre}" class="from-control" placeholder="Ingrese su nombre" required>
+ 					</div>
+ 					<div class="from-group">
+ 						<label>Apellido: </label>
+ 						<input type="text" name="apellido" th:field="*{apellido}" class="from-control" placeholder="Ingrese su apellido" required>
+ 					</div>
+ 					<div class="from-group">
+ 						<label>Email: </label>
+ 						<input type="email" name="email" th:field="*{email}" class="from-control" placeholder="Ingrese su email" required>
+ 					</div>
+ 					<div class="from-group">
+ 						<label>Telefono: </label>
+ 						<input type="number" name="telefono" th:field="*{telefono}" class="from-control" placeholder="Ingrese su telefono" required>
+ 					</div>
+ 					
+ 					<br>
+ 					<div class="box-footer">
+ 						<button class="btn btn-success">Guardar</button>
+ 					</div>
+ 				</form>
+ 			</div>
+ 		</div> 	
+ 	</div>
+ </div>
+</body>
+</html>

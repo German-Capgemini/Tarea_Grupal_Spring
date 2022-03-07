@@ -25,27 +25,32 @@ public class VentaServiceImpl implements VentaService {
 	}
 
 	@Override
+	@Transactional
 	public Venta findByFolio(Long folio) {
 		return repositorio.findById(folio).orElse(null);
 	}
 
 	@Override
+	@Transactional
 	public Venta guardarVenta(Venta venta) {
 		return repositorio.save(venta);
 	}
 
 	@Override
+	@Transactional
 	public void eliminarVenta(Long folio) {
 		repositorio.deleteById(folio);
 
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Producto> findAllProductos() {
 		return repositorio.findAllProductos();
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Cliente> findAllClientes() {
 		return repositorio.findAllClientes();
 	}

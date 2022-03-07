@@ -44,20 +44,20 @@ public class ProductoController {
 	}
 
 	// Editar producto
-	@GetMapping("/producto/editar/{id}")
-	public String editarProducto(@PathVariable Long id, Model modelo) {
-		modelo.addAttribute("keyProducto", productoServicio.findByClave(id));
+	@GetMapping("/producto/editar/{clave}")
+	public String editarProducto(@PathVariable Long clave, Model modelo) {
+		modelo.addAttribute("keyProducto", productoServicio.findByClave(clave));
 		return "formEditarProducto";
 
 	}
 
 	// Actualizar producto
-	@PostMapping("/producto/{id}")
-	public String actualizarProducto(@PathVariable Long id, @ModelAttribute("keyProducto") Producto producto) {
+	@PostMapping("/producto/{clave}")
+	public String actualizarProducto(@PathVariable Long clave, @ModelAttribute("keyProducto") Producto producto) {
 
-		Producto productoExiste = productoServicio.findByClave(id);
+		Producto productoExiste = productoServicio.findByClave(clave);
 
-		productoExiste.setClave(id);
+		productoExiste.setClave(clave);
 		productoExiste.setNombre(producto.getNombre());
 		productoExiste.setDescripcion(producto.getDescripcion());
 		productoExiste.setPrecioUnitario(producto.getPrecioUnitario());
@@ -69,9 +69,9 @@ public class ProductoController {
 	}
 
 	// Eliminar producto
-	@GetMapping("/producto/eliminar/{id}")
-	public String eliminarProducto(@PathVariable Long id) {
-		productoServicio.eliminarProducto(id);
+	@GetMapping("/producto/eliminar/{clave}")
+	public String eliminarProducto(@PathVariable Long clave) {
+		productoServicio.eliminarProducto(clave);
 		return "redirect:/productos";
 	}
 }

@@ -20,27 +20,28 @@ public class ProductoServicioImpl implements ProductoService {
 	}
 
 	@Override
-	public Producto findByClave(Long clave) {
-		// TODO Auto-generated method stub
-		return null;
+	public Producto findByClave(Long clave) {		
+		return productoDao.findByClave(clave);
 	}
 
 	@Override
-	public Producto guardarProducto(Producto producto) {
-		// TODO Auto-generated method stub
-		return null;
+	public Producto guardarProducto(Producto producto) {		
+		return productoDao.guardarProducto(producto);
 	}
 
 	@Override
-	public Producto buscarProducto(Long clave) {
-		// TODO Auto-generated method stub
-		return null;
+	public Producto buscarProducto(Long clave) {		
+		return productoDao.buscarProducto(clave);
 	}
 
 	@Override
 	public void eliminarProducto(Long clave) {
-		// TODO Auto-generated method stub
+		productoDao.eliminarProducto(clave);
+	}
 
+	@Override
+	public List<Producto> findAll() {		
+		return productoDao.findAll();
 	}
 
 }

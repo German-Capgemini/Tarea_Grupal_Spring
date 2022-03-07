@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Productos</title>
+<title>Ventas</title>
 
 
 <!-- CSS only -->
@@ -33,32 +33,34 @@
 	<!-- Espacio para contenido -->
 	<div class="container">
 		<div class="row">
-			<h3>Lista de Producto</h3>
+			<h3>Lista de Ventas</h3>
 		</div>
 		<table class="table table-hover">
 			<thead style="background-color: #e3f2fd;">
 				<tr>
-					<th>Clave</th>
-					<th>Nombre</th>
-					<th>Descripción</th>
-					<th>Precio/Unidad</th>
-					<th>Existencias</th>
+					<th>Folio</th>
+					<th>Nº Cliente</th>
+					<th>Producto</th>
+					<th>Cantidad</th>
+					<th>Subtotal</th>
+					<th>IVA</th>
+					<th>Total</th>
 					<th>Acción</th>
 				<tr>
 			</thead>
 			<tbody>
-				<tr th:each="productos : ${datos}">
-					<td th:text="${productos.clave}"></td>
-					<td th:text="${productos.nombre}"></td>
-					<td th:text="${productos.descripcion}"></td>
-					<td th:text="${productos.precioUnitario}"></td>
-					<td th:text="${productos.existencias}"></td>
+				<tr th:each="ventas: ${datos}">
+					<td th:text="${ventas.folio}"></td>
+					<td th:text="${ventas.cliente}"></td>
+					<td th:text="${ventas.producto}"></td>
+					<td th:text="${ventas.cantidad}"></td>
+					<td th:text="${ventas.subtotal}"></td>
+					<td th:text="${ventas.iva}"></td>
+					<td th:text="${ventas.total}"></td>
 
 
-					<td><a
-						th:href="@{/producto/editar/{id}(id = ${productos.clave})}"
-						class="btn btn-info">Editar</a> <a
-						th:href="@{/producto/eliminar/{id}(id = ${productos.clave})}"
+					<td> <a
+						th:href="@{/venta/eliminar/{folio}(folio = ${ventas.folio})}"
 						class="btn btn-danger">Borrar</a></td>
 				</tr>
 

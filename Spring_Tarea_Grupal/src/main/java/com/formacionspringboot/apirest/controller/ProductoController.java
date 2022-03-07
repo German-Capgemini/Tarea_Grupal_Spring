@@ -46,7 +46,7 @@ public class ProductoController {
 	// Editar producto
 	@GetMapping("/producto/editar/{id}")
 	public String editarProducto(@PathVariable Long id, Model modelo) {
-		modelo.addAttribute("keyProducto", productoServicio.buscarProducto(id));
+		modelo.addAttribute("keyProducto", productoServicio.findByClave(id));
 		return "formEditarProducto";
 
 	}
@@ -55,7 +55,7 @@ public class ProductoController {
 	@PostMapping("/producto/{id}")
 	public String actualizarProducto(@PathVariable Long id, @ModelAttribute("keyProducto") Producto producto) {
 
-		Producto productoExiste = productoServicio.buscarProducto(id);
+		Producto productoExiste = productoServicio.findByClave(id);
 
 		productoExiste.setClave(id);
 		productoExiste.setNombre(producto.getNombre());
